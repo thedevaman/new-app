@@ -3,7 +3,7 @@ import Newsitem from './Newsitem'
 
 export class News extends Component {
  
-  articals = [
+  articles = [
     {
     "source": {
     "id": "bbc-sport",
@@ -57,16 +57,14 @@ export class News extends Component {
     return (
       <div className='container my-3'>
         <h2>Top Headlines</h2>
+       
         <div className="row">
-          <div className="col-md-4">
-          <Newsitem tiltle = "myTitle" description = "My DEscription"/>
+        {this.state.articles.map((element)=>{
+          return  <div className="col-md-4" key={element.url}>
+          <Newsitem title = {element.title.slice(0,45)} description = {element.description.slice(0, 88)} imageUrl={element.urlToImage} newsUrl = {element.url}/>
           </div>
-          <div className="col-md-4">
-          <Newsitem tiltle = "myTitle" description = "My DEscription"/>
-          </div>
-          <div className="col-md-4">
-          <Newsitem tiltle = "myTitle" description = "My DEscription"/>
-          </div>
+        })}
+         
          
         </div>
         
